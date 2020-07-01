@@ -16,12 +16,13 @@ public class RequestServiceImpl implements RequestService{
 
 
     @Override
-    public String createRequest(String url, String email, String elementXPath, Date date) {
+    public String createRequest(String url, String email, String elementXPath, Date date, String forDisappear) {
         Request request=new Request();
         request.setUrl(url);
         request.setDate(date);
         request.setEmail(email);
         request.setElementXPath(elementXPath);
+        request.setDisappearOfTheElement(forDisappear);
         requestRepository.save(request);
         return "Request Created with: \n "+request.toString();
     }

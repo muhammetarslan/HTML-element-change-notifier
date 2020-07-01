@@ -5,7 +5,7 @@ target/
 !**/src/test/**
 *properties
 node_modules
-.json
+package-lock.json
 
 ### STS ###
 .apt_generated

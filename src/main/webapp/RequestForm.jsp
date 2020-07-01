@@ -32,6 +32,17 @@
                 </tr>
                 <tr>
                     <td>
+                        <form:label path="disappearOfTheElement">What change do you want to track?</form:label>
+                    </td>
+                    <td>
+                        <form:select path="disappearOfTheElement">
+                            <option value="disappear">Disappear of the element</option>
+                            <option value="appear">Appearance of the element</option>
+                        </form:select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <form:label path="email">Email</form:label>
                     </td>
                     <td>
@@ -44,6 +55,11 @@
                     </td>
                     <td>
                         <form:input type="date" path="date" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Submit">
                     </td>
                 </tr>
             </table>

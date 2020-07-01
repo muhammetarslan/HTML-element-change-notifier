@@ -1,17 +1,12 @@
 package com.irdbs.internetelementchangenotifier.controller;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.irdbs.internetelementchangenotifier.model.Request;
 import com.irdbs.internetelementchangenotifier.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @Controller
 public class RequestController {
@@ -25,13 +20,9 @@ public class RequestController {
         return "RequestForm";
     }
 
-    @PutMapping("/")
+    @PostMapping("/")
     public String createRequest(@ModelAttribute("requestForm")Request request){
        return requestService.createRequest(request);
     }
-    @GetMapping("/requests")
-    @JsonFormat
-    public List<Request> getRequestList(){
-        return requestService.getAllRequests();
-    }
+
 }

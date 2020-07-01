@@ -1,10 +1,11 @@
 package com.irdbs.internetelementchangenotifier.model;
 
+import com.sun.istack.NotNull;
+import org.hibernate.annotations.Type;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
@@ -13,23 +14,35 @@ import java.util.Objects;
 public class Request {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long requestId;
-    @NonNull
+    @NotNull
     private String url;
-    @NonNull
+    @NotNull
+    @Column(length = 35)
     private String email;
-    @NonNull
+    @NotNull
+    @Column(length = 80)
     private String elementXPath;
-    @NonNull
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
+    @NotNull
+    @Column(length = 15)
+    private String disappearOfTheElement;
+
     public Request(){};
 
-    public Request(long requestId, @NonNull String url, @NonNull String email, @NonNull String elementXPath, @NonNull Date date) {
+
+
+
+    public Request(long requestId, @NonNull String url, @NonNull String email, @NonNull String elementXPath, @NonNull Date date, String disappearOfTheElement) {
         this.requestId = requestId;
         this.url = url;
         this.email = email;
         this.elementXPath = elementXPath;
         this.date = date;
+        this.disappearOfTheElement=disappearOfTheElement;
     }
 
     public long getRequestId() {
@@ -72,6 +85,14 @@ public class Request {
         this.date = date;
     }
 
+    public String getDisappearOfTheElement() {
+        return disappearOfTheElement;
+    }
+
+    public void setDisappearOfTheElement(String disappearOfTheElement) {
+        this.disappearOfTheElement = disappearOfTheElement;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -97,6 +118,7 @@ public class Request {
                 ", email='" + email + '\'' +
                 ", elementXPath='" + elementXPath + '\'' +
                 ", date=" + date +
+                ", disappearTrueAppearFalse: " + disappearOfTheElement+
                 '}';
     }
 }
