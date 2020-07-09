@@ -30,6 +30,8 @@ public class Request {
     @NotNull
     @Column(length = 15)
     private String disappearOfTheElement;
+    @Column(length = 1)
+    private byte isScheduled;
 
     public Request(){};
 
